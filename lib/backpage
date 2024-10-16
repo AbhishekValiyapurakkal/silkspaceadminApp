@@ -1,0 +1,18 @@
+ElevatedButton(
+                onPressed: () {
+                  create();
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Add product',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                ),
+                style: ButtonStyle(
+                  backgroundColor:
+                      WidgetStatePropertyAll(Colors.blueAccent.shade400),
+                  foregroundColor: WidgetStatePropertyAll(Colors.white),
+                  elevation: WidgetStatePropertyAll(100),
+                  shadowColor: WidgetStatePropertyAll(Colors.black),
+                  minimumSize: WidgetStatePropertyAll(Size(200, 50)),
+                ),
+              ),
