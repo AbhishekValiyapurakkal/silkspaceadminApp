@@ -5,7 +5,10 @@ class GlobalVariables extends ChangeNotifier {
   static List<String> username = ['abhishek', 'anas'];
   static int userIndex = 0;
 
-  List<UserModel> get allUsers => users;
+  int get userind => userIndex;
+
+  List<String> get user => username;
+  
 
   void addUser(UserModel user) {
     users.add(user);
@@ -30,9 +33,8 @@ class GlobalVariables extends ChangeNotifier {
         image: 'image'),
   ];
 
-  int get userind => userIndex;
+  List<UserModel> get allUsers => users;
 
-  List<String> get user => username;
 
   void changeName(String name, int index) {
     username[index] = name;

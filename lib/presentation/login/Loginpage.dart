@@ -3,8 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:silkspaceadmin/Buttons/buttons.dart';
 import 'package:silkspaceadmin/presentation/home/Homepage.dart';
+
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
 
@@ -23,23 +25,22 @@ class _LoginpageState extends State<Loginpage> {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: email.text, password: password.text);
-      // SharedPreferences preferences = await SharedPreferences.getInstance();
-      // preferences.setBool('login', true);
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => homepage(),
+            builder: (context) => const homepage(),
           ));
     } catch (e) {
       print(e);
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text("ALERT !"),
+          title: const Text("ALERT !"),
           content: Text(e.toString()),
           actions: [
             TextButton(
-                onPressed: () => Navigator.pop(context), child: Text("OK"))
+                onPressed: () => Navigator.pop(context),
+                child: const Text("OK"))
           ],
         ),
       );
@@ -54,33 +55,34 @@ class _LoginpageState extends State<Loginpage> {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text("ALERT !"),
+          title: const Text("ALERT !"),
           content: Text(e.toString()),
           actions: [
             TextButton(
-                onPressed: () => Navigator.pop(context), child: Text("OK"))
+                onPressed: () => Navigator.pop(context),
+                child: const Text("OK"))
           ],
         ),
       );
     }
   }
 
-  // Future googlesignin() async {
-  //   final google = GoogleSignIn();
-  //   final user = await google.signIn().catchError((error) {});
-  //   if (user == null) return;
-  //   final auth = await user.authentication;
-  //   final credential = await GoogleAuthProvider.credential(
-  //       accessToken: auth.accessToken, idToken: auth.idToken);
-  //   await FirebaseAuth.instance.signInWithCredential(credential);
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   preferences.setBool('login', true);
-  //   Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //         builder: (context) => btmnav(),
-  //       ));
-  // }
+  Future googlesignin() async {
+    final google = GoogleSignIn();
+    final user = await google.signIn().catchError((error) {});
+    if (user == null) return;
+    final auth = await user.authentication;
+    final credential = await GoogleAuthProvider.credential(
+        accessToken: auth.accessToken, idToken: auth.idToken);
+    await FirebaseAuth.instance.signInWithCredential(credential);
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setBool('login', true);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const homepage(),
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,14 +93,13 @@ class _LoginpageState extends State<Loginpage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Container(
                     height: 110,
                     width: 100,
-                    //color: Colors.blue,
-                    child: Center(
+                    child: const Center(
                         child: Image(
                       image: AssetImage("lib/images/Designer.png"),
                       fit: BoxFit.fill,
@@ -116,13 +117,13 @@ class _LoginpageState extends State<Loginpage> {
                               fontWeight: FontWeight.w600,
                               fontSize: 35,
                               shadows: [
-                                Shadow(
+                                const Shadow(
                                     color: Colors.grey,
                                     offset: Offset(0, 2),
                                     blurRadius: 5)
                               ]),
                         ),
-                        Text(
+                        const Text(
                           "Enter your credential to login",
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w500),
@@ -139,7 +140,7 @@ class _LoginpageState extends State<Loginpage> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
                       fillColor: Colors.grey,
-                      prefixIcon: Icon(Icons.person),
+                      prefixIcon: const Icon(Icons.person),
                       labelText: 'Username',
                     ),
                   ),
@@ -153,7 +154,7 @@ class _LoginpageState extends State<Loginpage> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
                       fillColor: Colors.grey,
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                       suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -174,7 +175,7 @@ class _LoginpageState extends State<Loginpage> {
                     },
                     height: 50,
                     width: 220),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextButton(
@@ -182,12 +183,12 @@ class _LoginpageState extends State<Loginpage> {
                       showDialog(
                           context: context,
                           builder: (BuildContext) => AlertDialog(
-                                title: Text('Forgot Password'),
+                                title: const Text('Forgot Password'),
                                 content: Padding(
                                   padding: const EdgeInsets.all(15.0),
                                   child: TextField(
                                     controller: forgotpassword,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         hintText: "Enter your email",
                                         border: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -200,48 +201,33 @@ class _LoginpageState extends State<Loginpage> {
                                         forgot();
                                         Navigator.pop(context);
                                       },
-                                      child: Text('verify')),
+                                      child: const Text('verify')),
                                   TextButton(
                                       onPressed: () {
                                         Navigator.pop(context);
                                       },
-                                      child: Text('cancel'))
+                                      child: const Text('cancel'))
                                 ],
                               ));
                     },
-                    child: Text("Forgot password?")),
-                // Text("OR"),
-                // Row(
-                //   children: [
-                //     SizedBox(
-                //       width: 60,
-                //     ),
-                //     Text("Do you want to"),
-                //     TextButton(
-                //         onPressed: () {
-                //           googlesignin();
-                //         },
-                //         child: Text("Continue with google ?"))
-                //   ],
-                // ),
-                // SizedBox(
-                //   height: 5,
-                // ),
-                // Row(
-                //   children: [
-                //     SizedBox(width: 80),
-                //     Text("Don't have an account?"),
-                //     TextButton(
-                //         onPressed: () {
-                //           Navigator.push(
-                //               context,
-                //               MaterialPageRoute(
-                //                 builder: (context) => Signup(),
-                //               ));
-                //         },
-                //         child: Text("Sign up"))
-                //   ],
-                // )
+                    child: const Text("Forgot password?")),
+                Text(
+                  "OR",
+                  style: TextStyle(color: Colors.black),
+                ),
+                Row(
+                  children: [
+                    const SizedBox(
+                      width: 60,
+                    ),
+                    const Text("Do you want to"),
+                    TextButton(
+                        onPressed: () {
+                          googlesignin();
+                        },
+                        child: const Text("Continue with google ?"))
+                  ],
+                ),
               ],
             ),
           ),

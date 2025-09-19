@@ -53,7 +53,7 @@ class _AddproductsState extends State<Addproducts> {
       'name': name.text,
       'price': price.text,
       'description': description.text,
-      'stock': stock.text,
+      'stock': int.tryParse(stock.text) ?? 0,
       'image': image,
       'category': categoryvalue,
       'maincategory': main.text,
@@ -69,7 +69,7 @@ class _AddproductsState extends State<Addproducts> {
           backgroundColor: Colors.white70,
           elevation: 40,
           shadowColor: Colors.black38,
-          title: Center(
+          title: const Center(
             child: Text(
               '',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
@@ -79,7 +79,7 @@ class _AddproductsState extends State<Addproducts> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Center(
+              const Center(
                 child: Text(
                   'Add New Products',
                   style: TextStyle(
@@ -104,10 +104,10 @@ class _AddproductsState extends State<Addproducts> {
                       ? Container(
                           height: 100,
                           width: 100,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.grey,
                           ),
-                          child: Column(
+                          child: const Column(
                             children: [
                               SizedBox(
                                 height: 20,
@@ -194,7 +194,7 @@ class _AddproductsState extends State<Addproducts> {
               ),
               Card(
                   child: DropdownButtonFormField(
-                hint: Text("Category"),
+                hint: const Text("Category"),
                 value: categoryvalue,
                 items: categorylist.map(
                   (item) {
@@ -213,12 +213,14 @@ class _AddproductsState extends State<Addproducts> {
                     ontap: () {
                       create();
                       Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         duration: Duration(seconds: 2),
                         content: Text("New product added successfully"),
                       ));
                     },
-                    txt: "Add Product", height: 50, width: 220,
+                    txt: "Add Product",
+                    height: 50,
+                    width: 220,
                   )),
             ],
           ),

@@ -18,7 +18,6 @@ class _UserspageState extends State<Userspage> {
   TextEditingController email = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    List<String> user1 = context.watch<GlobalVariables>().user;
     final users = context.watch<GlobalVariables>().allUsers;
     return SafeArea(
       child: Scaffold(
@@ -26,8 +25,8 @@ class _UserspageState extends State<Userspage> {
           elevation: 10,
           shadowColor: Colors.black,
           backgroundColor: Colors.blue[300],
-          title: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 80),
+          title: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 80),
             child: Text(
               "USERS",
               style: TextStyle(
@@ -46,12 +45,12 @@ class _UserspageState extends State<Userspage> {
                   onPressed: () {
                     context.read<GlobalVariables>().changeInt(index);
                   },
-                  icon: Icon(Icons.check)),
+                  icon: const Icon(Icons.check)),
               trailing: IconButton(
                   onPressed: () {
                     context.read<GlobalVariables>().delet(index);
                   },
-                  icon: Icon(Icons.delete)),
+                  icon: const Icon(Icons.delete)),
               onTap: () {
                 showDialog(
                     context: context,
@@ -68,7 +67,7 @@ class _UserspageState extends State<Userspage> {
                                     .changeName(user.text.trim(), index);
                                 user.clear();
                               },
-                              child: Text("submit"))
+                              child: const Text("submit"))
                         ],
                       );
                     });
@@ -83,17 +82,17 @@ class _UserspageState extends State<Userspage> {
               context: context,
               builder: (context) {
                 return AlertDialog(
-                  title: Text("Add USer"),
+                  title: const Text("Add USer"),
                   content: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       TextField(
                         controller: name,
-                        decoration: InputDecoration(hintText: 'Name'),
+                        decoration: const InputDecoration(hintText: 'Name'),
                       ),
                       TextField(
                         controller: email,
-                        decoration: InputDecoration(hintText: 'Email'),
+                        decoration: const InputDecoration(hintText: 'Email'),
                       ),
                     ],
                   ),
@@ -107,18 +106,18 @@ class _UserspageState extends State<Userspage> {
                               image: 'image'));
                           Navigator.pop(context);
                         },
-                        child: Text("OK")),
+                        child: const Text("OK")),
                     TextButton(
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: Text("Cancel"))
+                        child: const Text("Cancel"))
                   ],
                 );
               },
             );
           },
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ),
       ),
     );
