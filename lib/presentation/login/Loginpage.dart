@@ -69,7 +69,9 @@ class _LoginpageState extends State<Loginpage> {
 
   Future googlesignin() async {
     final google = GoogleSignIn();
-    final user = await google.signIn().catchError((error) {});
+    final user = await google.signIn().catchError((error) {
+      return null;
+    });
     if (user == null) return;
     final auth = await user.authentication;
     final credential = await GoogleAuthProvider.credential(
@@ -168,7 +170,7 @@ class _LoginpageState extends State<Loginpage> {
                     ),
                   ),
                 ),
-                elvbtn(
+                Elvbtn(
                     txt: "Login",
                     ontap: () {
                       signin();

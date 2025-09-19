@@ -312,7 +312,7 @@ class _AddSareeState extends State<AddSaree> {
                   child: Text("Add new category")),
               Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: elvbtn(
+                  child: Elvbtn(
                     ontap: () {
                       create();
                       Navigator.pop(context);
@@ -321,7 +321,9 @@ class _AddSareeState extends State<AddSaree> {
                         content: Text("New product added successfully"),
                       ));
                     },
-                    txt: "Add Product", height: 50, width: 220,
+                    txt: "Add Product",
+                    height: 50,
+                    width: 220,
                   )),
             ],
           ),

@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:silkspaceadmin/Addproducts0.dart';
-import 'package:silkspaceadmin/presentation/add/Addproducts.dart';
-import 'package:silkspaceadmin/presentation/add/addsaree.dart';
 
 class Productslist extends StatefulWidget {
   const Productslist({super.key});
@@ -20,7 +18,7 @@ class _ProductslistState extends State<Productslist> {
             backgroundColor: Colors.blue[300],
             elevation: 10,
             shadowColor: Colors.black,
-            title: Center(
+            title: const Center(
               child: Text(
                 'Products List',
                 style: TextStyle(
@@ -39,7 +37,7 @@ class _ProductslistState extends State<Productslist> {
                   print(snapshot.error);
                 }
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return LinearProgressIndicator();
+                  return const LinearProgressIndicator();
                 }
                 return ListView.builder(
                   itemCount: snapshot.data!.docs.length,
@@ -55,7 +53,7 @@ class _ProductslistState extends State<Productslist> {
                                 .doc(snap.id)
                                 .delete();
                           },
-                          icon: Icon(Icons.delete)),
+                          icon: const Icon(Icons.delete)),
                     );
                   },
                 );
@@ -65,11 +63,11 @@ class _ProductslistState extends State<Productslist> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Addproducts0(),
+                    builder: (context) => const Addproducts0(),
                   ));
             },
             backgroundColor: Colors.green[300],
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
           )),
     );
   }
