@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:silkspaceadmin/Buttons/buttons.dart';
 import 'package:silkspaceadmin/presentation/home/Homepage.dart';
+import 'package:silkspaceadmin/presentation/login/Signuppage.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -230,6 +231,21 @@ class _LoginpageState extends State<Loginpage> {
                         child: const Text("Continue with google ?"))
                   ],
                 ),
+                Row(
+                  children: [
+                    const SizedBox(width: 80),
+                    const Text("Don't have an account?"),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Signup(),
+                              ));
+                        },
+                        child: const Text("Sign up"))
+                  ],
+                )
               ],
             ),
           ),
