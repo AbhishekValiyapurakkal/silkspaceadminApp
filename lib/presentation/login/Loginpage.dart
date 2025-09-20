@@ -74,7 +74,7 @@ class _LoginpageState extends State<Loginpage> {
     });
     if (user == null) return;
     final auth = await user.authentication;
-    final credential = await GoogleAuthProvider.credential(
+    final credential = GoogleAuthProvider.credential(
         accessToken: auth.accessToken, idToken: auth.idToken);
     await FirebaseAuth.instance.signInWithCredential(credential);
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -98,15 +98,15 @@ class _LoginpageState extends State<Loginpage> {
                 const SizedBox(
                   height: 50,
                 ),
-                Container(
+                const SizedBox(
                     height: 110,
                     width: 100,
-                    child: const Center(
+                    child: Center(
                         child: Image(
                       image: AssetImage("lib/images/Designer.png"),
                       fit: BoxFit.fill,
                     ))),
-                Container(
+                SizedBox(
                   height: 80,
                   width: 300,
                   //color: Colors.blue,
@@ -213,7 +213,7 @@ class _LoginpageState extends State<Loginpage> {
                               ));
                     },
                     child: const Text("Forgot password?")),
-                Text(
+                const Text(
                   "OR",
                   style: TextStyle(color: Colors.black),
                 ),

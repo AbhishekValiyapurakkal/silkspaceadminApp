@@ -19,9 +19,9 @@ class _AddSareeState extends State<AddSaree> {
 
   Future<String?> uploadimage(File path) async {
     firebase_storage.FirebaseStorage storage =
-        await firebase_storage.FirebaseStorage.instance;
-    DateTime current_time = DateTime.now();
-    String timestamp = current_time.millisecondsSinceEpoch.toString();
+        firebase_storage.FirebaseStorage.instance;
+    DateTime currentTime = DateTime.now();
+    String timestamp = currentTime.millisecondsSinceEpoch.toString();
     firebase_storage.Reference ref = storage.ref().child('images/$timestamp');
     firebase_storage.UploadTask task = ref.putFile(path);
     await task;
@@ -34,9 +34,9 @@ class _AddSareeState extends State<AddSaree> {
 
   Future<String?> uploadcoverimage(File path) async {
     firebase_storage.FirebaseStorage storage =
-        await firebase_storage.FirebaseStorage.instance;
-    DateTime current_time = DateTime.now();
-    String timestamp = current_time.millisecondsSinceEpoch.toString();
+        firebase_storage.FirebaseStorage.instance;
+    DateTime currentTime = DateTime.now();
+    String timestamp = currentTime.millisecondsSinceEpoch.toString();
     firebase_storage.Reference ref = storage.ref().child('images/$timestamp');
     firebase_storage.UploadTask task = ref.putFile(path);
     await task;
@@ -97,7 +97,7 @@ class _AddSareeState extends State<AddSaree> {
         backgroundColor: Colors.white70,
         appBar: AppBar(
           backgroundColor: Colors.white70,
-          title: Center(
+          title: const Center(
             child: Text(
               '',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
@@ -107,7 +107,7 @@ class _AddSareeState extends State<AddSaree> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Center(
+              const Center(
                 child: Text(
                   'Add New Saree',
                   style: TextStyle(
@@ -123,7 +123,7 @@ class _AddSareeState extends State<AddSaree> {
                     if (PickedFile == null) {
                       return;
                     } else {
-                      File path = await File(PickedFile.path);
+                      File path = File(PickedFile.path);
                       image = await uploadimage(path);
                       setState(() {});
                     }
@@ -132,10 +132,10 @@ class _AddSareeState extends State<AddSaree> {
                       ? Container(
                           height: 100,
                           width: 100,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.grey,
                           ),
-                          child: Column(
+                          child: const Column(
                             children: [
                               SizedBox(
                                 height: 20,
@@ -222,8 +222,8 @@ class _AddSareeState extends State<AddSaree> {
               ),
               Card(
                   child: DropdownButtonFormField(
-                hint: Text("Category"),
-                value: sareevalue,
+                hint: const Text("Category"),
+                initialValue: sareevalue,
                 items: sareelist.map(
                   (item) {
                     return DropdownMenuItem(value: item, child: Text(item));
@@ -250,13 +250,13 @@ class _AddSareeState extends State<AddSaree> {
                                   if (PickedFile == null) {
                                     return;
                                   } else {
-                                    File path = await File(PickedFile.path);
+                                    File path = File(PickedFile.path);
                                     coverimage = await uploadcoverimage(path);
                                     setState(() {});
                                   }
                                 },
                                 child: coverimage == null
-                                    ? CircleAvatar(
+                                    ? const CircleAvatar(
                                         radius: 50,
                                         child: Icon(
                                           Icons.add_a_photo,
@@ -288,7 +288,7 @@ class _AddSareeState extends State<AddSaree> {
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: Text("cancel")),
+                              child: const Text("cancel")),
                           TextButton(
                               onPressed: () async {
                                 await FirebaseFirestore.instance
@@ -304,19 +304,19 @@ class _AddSareeState extends State<AddSaree> {
                                 coverimage == null;
                                 Navigator.pop(context);
                               },
-                              child: Text("Add")),
+                              child: const Text("Add")),
                         ],
                       ),
                     );
                   },
-                  child: Text("Add new category")),
+                  child: const Text("Add new category")),
               Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Elvbtn(
                     ontap: () {
                       create();
                       Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         duration: Duration(seconds: 2),
                         content: Text("New product added successfully"),
                       ));

@@ -23,11 +23,11 @@ class _homepageState extends State<homepage> {
           backgroundColor: Colors.blue[300],
           elevation: 10,
           shadowColor: Colors.black,
-          title: Center(
+          title: const Center(
             child: Text(
               'Silk Space Admin',
               style: TextStyle(
-                  color: const Color.fromARGB(255, 226, 229, 232),
+                  color: Color.fromARGB(255, 226, 229, 232),
                   fontSize: 29,
                   fontWeight: FontWeight.w600),
             ),
@@ -39,8 +39,8 @@ class _homepageState extends State<homepage> {
           child: ListView(
             children: [
               UserAccountsDrawerHeader(
-                  decoration: BoxDecoration(color: Colors.black54),
-                  currentAccountPicture: CircleAvatar(
+                  decoration: const BoxDecoration(color: Colors.black54),
+                  currentAccountPicture: const CircleAvatar(
                     backgroundImage: AssetImage("lib/images/project2.jpg"),
                     foregroundImage: AssetImage("lib/images/project2.jpg"),
                     backgroundColor: Colors.blueGrey,
@@ -63,10 +63,10 @@ class _homepageState extends State<homepage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Userspage(),
+                              builder: (context) => const Userspage(),
                             ));
                       },
-                      child: Text(
+                      child: const Text(
                         'USERS',
                         style: TextStyle(
                             color: Colors.white,
@@ -84,10 +84,10 @@ class _homepageState extends State<homepage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Productslist(),
+                              builder: (context) => const Productslist(),
                             ));
                       },
-                      child: Text(
+                      child: const Text(
                         'PRODUCTS',
                         style: TextStyle(
                             color: Colors.white,
@@ -105,10 +105,10 @@ class _homepageState extends State<homepage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Orderspage(),
+                              builder: (context) => const Orderspage(),
                             ));
                       },
-                      child: Text(
+                      child: const Text(
                         'ORDERS',
                         style: TextStyle(
                             color: Colors.white,
@@ -123,11 +123,11 @@ class _homepageState extends State<homepage> {
         body: ListView(
           shrinkWrap: true,
           children: [
-            Container(
+            SizedBox(
               height: 610,
               width: double.infinity,
               //color: Colors.blue,
-              child: Image(
+              child: const Image(
                 image: AssetImage("lib/images/project3.jpg"),
                 fit: BoxFit.fill,
               ),
@@ -141,8 +141,8 @@ class _homepageState extends State<homepage> {
                   Text("Grow with SilkSpace",
                       style: GoogleFonts.alegreya(
                           fontSize: 25, fontWeight: FontWeight.w600)),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Image(
                       image: AssetImage("lib/images/grow.jpg"),
                       fit: BoxFit.fill,

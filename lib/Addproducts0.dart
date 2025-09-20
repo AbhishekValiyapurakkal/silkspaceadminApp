@@ -16,7 +16,7 @@ class _Addproducts0State extends State<Addproducts0> {
       backgroundColor: Colors.white60,
       appBar: AppBar(
         backgroundColor: Colors.white70,
-        title: Center(
+        title: const Center(
           child: Text(
             '',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
@@ -29,7 +29,7 @@ class _Addproducts0State extends State<Addproducts0> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AddSaree(),
+                  builder: (context) => const AddSaree(),
                 ));
           },
           child: Row(
@@ -41,7 +41,7 @@ class _Addproducts0State extends State<Addproducts0> {
                   width: 150,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage("lib/images/Villagecotton3.jpg"),
                           // alignment: Alignment.bottomCenter,
                           fit: BoxFit.fill),
@@ -51,7 +51,7 @@ class _Addproducts0State extends State<Addproducts0> {
                             color: Colors.black87.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 4,
-                            offset: Offset(0, 2))
+                            offset: const Offset(0, 2))
                       ]),
                   child: Center(
                     child: Text(
@@ -61,7 +61,7 @@ class _Addproducts0State extends State<Addproducts0> {
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                           shadows: [
-                            Shadow(
+                            const Shadow(
                                 color: Colors.black54,
                                 blurRadius: 10,
                                 offset: Offset(0, 2))
@@ -77,7 +77,7 @@ class _Addproducts0State extends State<Addproducts0> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Addproducts(),
+                          builder: (context) => const Addproducts(),
                         ));
                   },
                   child: Container(
@@ -85,7 +85,7 @@ class _Addproducts0State extends State<Addproducts0> {
                     width: 150,
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        image: DecorationImage(
+                        image: const DecorationImage(
                             image: AssetImage("lib/images/crepe.jpg"),
                             // alignment: Alignment.bottomCenter,
                             fit: BoxFit.fill),
@@ -95,7 +95,7 @@ class _Addproducts0State extends State<Addproducts0> {
                               color: Colors.black87.withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 4,
-                              offset: Offset(0, 2))
+                              offset: const Offset(0, 2))
                         ]),
                     child: Center(
                       child: Text(
@@ -105,7 +105,7 @@ class _Addproducts0State extends State<Addproducts0> {
                             color: Colors.white,
                             fontWeight: FontWeight.w600,
                             shadows: [
-                              Shadow(
+                              const Shadow(
                                   color: Colors.black54,
                                   blurRadius: 10,
                                   offset: Offset(0, 2))

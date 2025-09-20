@@ -17,9 +17,9 @@ class _AddproductsState extends State<Addproducts> {
   String? image;
   Future<String?> uploadimage(File path) async {
     firebase_storage.FirebaseStorage storage =
-        await firebase_storage.FirebaseStorage.instance;
-    DateTime current_time = DateTime.now();
-    String timestamp = current_time.millisecondsSinceEpoch.toString();
+        firebase_storage.FirebaseStorage.instance;
+    DateTime currentTime = DateTime.now();
+    String timestamp = currentTime.millisecondsSinceEpoch.toString();
     firebase_storage.Reference ref = storage.ref().child('images/$timestamp');
     firebase_storage.UploadTask task = ref.putFile(path);
     await task;
@@ -95,7 +95,7 @@ class _AddproductsState extends State<Addproducts> {
                     if (PickedFile == null) {
                       return;
                     } else {
-                      File path = await File(PickedFile.path);
+                      File path = File(PickedFile.path);
                       image = await uploadimage(path);
                       setState(() {});
                     }
@@ -195,7 +195,7 @@ class _AddproductsState extends State<Addproducts> {
               Card(
                   child: DropdownButtonFormField(
                 hint: const Text("Category"),
-                value: categoryvalue,
+                initialValue: categoryvalue,
                 items: categorylist.map(
                   (item) {
                     return DropdownMenuItem(value: item, child: Text(item));

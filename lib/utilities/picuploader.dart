@@ -16,9 +16,9 @@ class _PicuploaderState extends State<Picuploader> {
   String? image;
   Future<String?> uploadimage(File path) async {
     firebase_storage.FirebaseStorage storage =
-        await firebase_storage.FirebaseStorage.instance;
-    DateTime current_time = DateTime.now();
-    String timestamp = current_time.millisecondsSinceEpoch.toString();
+        firebase_storage.FirebaseStorage.instance;
+    DateTime currentTime = DateTime.now();
+    String timestamp = currentTime.millisecondsSinceEpoch.toString();
     firebase_storage.Reference ref = storage.ref().child('images/$timestamp');
     firebase_storage.UploadTask task = ref.putFile(path);
     await task;
@@ -39,7 +39,7 @@ class _PicuploaderState extends State<Picuploader> {
           if (PickedFile == null) {
             return;
           } else {
-            File path = await File(PickedFile.path);
+            File path = File(PickedFile.path);
             image= await uploadimage(path);
             setState(() {
               
@@ -49,7 +49,7 @@ class _PicuploaderState extends State<Picuploader> {
         child: image == null? Container(
           height: 100,
           width: 100,
-          decoration: BoxDecoration(color: Colors.grey,),
+          decoration: const BoxDecoration(color: Colors.grey,),
         ):Image.network(image!)
       ),
     );

@@ -25,8 +25,8 @@ class _UserspageState extends State<Orderspage> {
           elevation: 10,
           shadowColor: Colors.black,
           backgroundColor: Colors.blue[300],
-          title: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 80),
+          title: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 80),
             child: Text(
               "Orders",
               style: TextStyle(
@@ -43,7 +43,7 @@ class _UserspageState extends State<Orderspage> {
                 print(snapshot.error);
               }
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return LinearProgressIndicator();
+                return const LinearProgressIndicator();
               }
               return ListView.builder(
                   shrinkWrap: true,
@@ -65,12 +65,12 @@ class _UserspageState extends State<Orderspage> {
                                 onPressed: () {
                                   update(snap.id);
                                   ScaffoldMessenger.of(context)
-                                      .showSnackBar(SnackBar(
+                                      .showSnackBar(const SnackBar(
                                     content: Text("Order Approved"),
                                     duration: Duration(seconds: 2),
                                   ));
                                 },
-                                icon: Icon(Icons.done)),
+                                icon: const Icon(Icons.done)),
                           ),
                         ),
                       ),
