@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:silkspaceadmin/Addproducts0.dart';
 
@@ -30,8 +31,11 @@ class _ProductslistState extends State<Productslist> {
             ),
           ),
           body: StreamBuilder(
-              stream:
-                  FirebaseFirestore.instance.collection('products').snapshots(),
+              stream: FirebaseFirestore.instance
+                  .collection('products')
+                  .where('userId',
+                      isEqualTo: FirebaseAuth.instance.currentUser!.email)
+                  .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   print(snapshot.error);
