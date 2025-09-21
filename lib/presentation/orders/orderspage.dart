@@ -9,12 +9,16 @@ class Orderspage extends StatefulWidget {
 }
 
 class _UserspageState extends State<Orderspage> {
-  update(track) async {
+  update(orderId) async {
     final data = {'track': "Confirmed"};
     await FirebaseFirestore.instance
         .collection('orders')
-        .doc(track)
+        .doc(orderId)
         .update(data);
+  }
+
+  bool isConfirmed(Map<String, dynamic> orderData) {
+    return (orderData['track'] ?? '').toString().toLowerCase() == 'confirmed';
   }
 
   @override
@@ -50,6 +54,8 @@ class _UserspageState extends State<Orderspage> {
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
                     final snap = snapshot.data!.docs[index];
+                    final orderData = snap.data();
+                    bool confirmed = isConfirmed(orderData);
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Card(
@@ -70,7 +76,7 @@ class _UserspageState extends State<Orderspage> {
                                     duration: Duration(seconds: 2),
                                   ));
                                 },
-                                icon: const Icon(Icons.done)),
+                                icon: Icon(Icons.done ,color: confirmed ? Colors.green : Colors.grey,)),
                           ),
                         ),
                       ),

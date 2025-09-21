@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:silkspaceadmin/presentation/product/Productslist.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:silkspaceadmin/presentation/login/Userspage.dart';
-import 'package:silkspaceadmin/global_variables.dart';
 import 'package:silkspaceadmin/presentation/orders/orderspage.dart';
 
 class homepage extends StatefulWidget {
@@ -46,35 +43,12 @@ class _homepageState extends State<homepage> {
                     backgroundColor: Colors.blueGrey,
                     radius: 10,
                   ),
-                  accountName: Text(context
-                      .watch<GlobalVariables>()
-                      .allUsers[context.watch<GlobalVariables>().userind]
-                      .name),
-                  accountEmail: Text(context
-                      .watch<GlobalVariables>()
-                      .allUsers[context.watch<GlobalVariables>().userind]
-                      .email)),
-              Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: Card(
-                  color: Colors.black38,
-                  child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Userspage(),
-                            ));
-                      },
-                      child: const Text(
-                        'USERS',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400),
-                      )),
-                ),
-              ),
+                  accountName: const Text(""),
+                  accountEmail: Text(
+                    (FirebaseAuth.instance.currentUser?.email).toString(),
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w600, fontSize: 16),
+                  )),
               Padding(
                 padding: const EdgeInsets.all(3.0),
                 child: Card(
@@ -123,11 +97,11 @@ class _homepageState extends State<homepage> {
         body: ListView(
           shrinkWrap: true,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 610,
               width: double.infinity,
               //color: Colors.blue,
-              child: const Image(
+              child: Image(
                 image: AssetImage("lib/images/project3.jpg"),
                 fit: BoxFit.fill,
               ),
