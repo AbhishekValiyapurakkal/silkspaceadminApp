@@ -67,6 +67,7 @@ class _UserspageState extends State<Orderspage> {
                           title: Text(snap['name']),
                           subtitle: Text(snap['address'].split("+").join("\n")),
                           trailing: Card(
+                            color: confirmed ? Colors.green : Colors.grey,
                             child: IconButton(
                                 onPressed: () {
                                   update(snap.id);
@@ -76,7 +77,9 @@ class _UserspageState extends State<Orderspage> {
                                     duration: Duration(seconds: 2),
                                   ));
                                 },
-                                icon: Icon(Icons.done ,color: confirmed ? Colors.green : Colors.grey,)),
+                                icon: const Icon(
+                                  Icons.done,
+                                )),
                           ),
                         ),
                       ),
