@@ -1,25 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:silkspaceadmin/presentation/product/Productslist.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:silkspaceadmin/presentation/orders/orderspage.dart';
+import 'package:silkspaceadmin/presentation/product/Productslist.dart';
 
-class homepage extends StatefulWidget {
-  const homepage({super.key});
+class Homepage extends StatelessWidget {
+  const Homepage({super.key});
 
-  @override
-  State<homepage> createState() => _homepageState();
-}
-
-class _homepageState extends State<homepage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue[300],
-          elevation: 10,
-          shadowColor: Colors.black,
+          elevation: 6,
+          shadowColor: Colors.black54,
           title: const Center(
             child: Text(
               'Silk Space Admin',
@@ -32,100 +27,97 @@ class _homepageState extends State<homepage> {
         ),
         drawer: Drawer(
           backgroundColor: Colors.black12,
-          elevation: 100,
+          elevation: 8,
           child: ListView(
             children: [
               UserAccountsDrawerHeader(
-                  decoration: const BoxDecoration(color: Colors.black54),
-                  currentAccountPicture: const CircleAvatar(
-                    backgroundImage: AssetImage("lib/images/project2.jpg"),
-                    foregroundImage: AssetImage("lib/images/project2.jpg"),
-                    backgroundColor: Colors.blueGrey,
-                    radius: 10,
-                  ),
-                  accountName: const Text(""),
-                  accountEmail: Text(
-                    (FirebaseAuth.instance.currentUser?.email).toString(),
-                    style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600, fontSize: 16),
-                  )),
-              Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: Card(
-                  color: Colors.black38,
-                  child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Productslist(),
-                            ));
-                      },
-                      child: const Text(
-                        'PRODUCTS',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400),
-                      )),
+                decoration: const BoxDecoration(color: Colors.black54),
+                currentAccountPicture: const CircleAvatar(
+                  backgroundImage: AssetImage("lib/images/project2.jpg"),
+                  backgroundColor: Colors.blueGrey,
+                ),
+                accountName: const Text(""),
+                accountEmail: Text(
+                  FirebaseAuth.instance.currentUser?.email ?? "",
+                  style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w600, fontSize: 16),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: Card(
-                  color: Colors.black38,
-                  child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Orderspage(),
-                            ));
-                      },
-                      child: const Text(
-                        'ORDERS',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400),
-                      )),
-                ),
+              _drawerButton(
+                label: "PRODUCTS",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Productslist(),
+                    ),
+                  );
+                },
+              ),
+              _drawerButton(
+                label: "ORDERS",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Orderspage(),
+                    ),
+                  );
+                },
               ),
             ],
           ),
         ),
         body: ListView(
-          shrinkWrap: true,
           children: [
-            const SizedBox(
-              height: 610,
-              width: double.infinity,
-              //color: Colors.blue,
-              child: Image(
-                image: AssetImage("lib/images/project3.jpg"),
-                fit: BoxFit.fill,
+            RepaintBoundary(
+              child: Image.asset(
+                "lib/images/project3.jpg",
+                fit: BoxFit.cover,
+                cacheWidth: 1080,
               ),
             ),
             Container(
               color: Colors.white,
-              height: 800,
-              width: 700,
+              padding: const EdgeInsets.all(12),
               child: Column(
                 children: [
-                  Text("Grow with SilkSpace",
-                      style: GoogleFonts.alegreya(
-                          fontSize: 25, fontWeight: FontWeight.w600)),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Image(
-                      image: AssetImage("lib/images/grow.jpg"),
-                      fit: BoxFit.fill,
+                  Text(
+                    "Grow with SilkSpace",
+                    style: GoogleFonts.alegreya(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  RepaintBoundary(
+                    child: Image.asset(
+                      "lib/images/grow.jpg",
+                      fit: BoxFit.cover,
+                      cacheWidth: 1080,
                     ),
                   ),
                 ],
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _drawerButton({required String label, required VoidCallback onTap}) {
+    return Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: Card(
+        color: Colors.black38,
+        child: TextButton(
+          onPressed: onTap,
+          child: Text(
+            label,
+            style: const TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400),
+          ),
         ),
       ),
     );

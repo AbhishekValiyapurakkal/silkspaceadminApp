@@ -3,13 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:silkspaceadmin/presentation/add/Addproducts.dart';
 import 'package:silkspaceadmin/presentation/add/addsaree.dart';
 
-class Addproducts0 extends StatefulWidget {
-  const Addproducts0({super.key});
-  @override
-  State<Addproducts0> createState() => _Addproducts0State();
-}
+class AddproductsScreen extends StatelessWidget {
+  const AddproductsScreen({super.key});
 
-class _Addproducts0State extends State<Addproducts0> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +40,6 @@ class _Addproducts0State extends State<Addproducts0> {
                       color: Colors.white,
                       image: const DecorationImage(
                           image: AssetImage("lib/images/Villagecotton3.jpg"),
-                          // alignment: Alignment.bottomCenter,
                           fit: BoxFit.fill),
                       borderRadius: BorderRadius.circular(15),
                       boxShadow: [
@@ -87,7 +83,6 @@ class _Addproducts0State extends State<Addproducts0> {
                         color: Colors.white,
                         image: const DecorationImage(
                             image: AssetImage("lib/images/crepe.jpg"),
-                            // alignment: Alignment.bottomCenter,
                             fit: BoxFit.fill),
                         borderRadius: BorderRadius.circular(15),
                         boxShadow: [
@@ -121,4 +116,5 @@ class _Addproducts0State extends State<Addproducts0> {
       ),
     );
   }
+
 }

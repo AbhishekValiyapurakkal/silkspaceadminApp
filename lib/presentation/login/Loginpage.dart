@@ -29,7 +29,7 @@ class _LoginpageState extends State<Loginpage> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const homepage(),
+            builder: (context) => const Homepage(),
           ));
     } catch (e) {
       print(e);
@@ -83,7 +83,7 @@ class _LoginpageState extends State<Loginpage> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const homepage(),
+          builder: (context) => const Homepage(),
         ));
   }
 

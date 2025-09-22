@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:silkspaceadmin/Addproducts0.dart';
+import 'package:silkspaceadmin/AddproductsScreen.dart';
 
 class Productslist extends StatefulWidget {
   const Productslist({super.key});
@@ -67,7 +67,7 @@ class _ProductslistState extends State<Productslist> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Addproducts0(),
+                    builder: (context) => const AddproductsScreen(),
                   ));
             },
             backgroundColor: Colors.green[300],
