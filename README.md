@@ -1,16 +1,24 @@
-# silkspaceadmin
+# Silkspace – Admin App
 
-A new Flutter project.
+Silkspace Admin App is a Flutter-based mobile application that allows administrators to manage services, users, and delivery partners in the Silkspace ecosystem. This app is designed to provide a smooth management experience with real-time data monitoring.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- **Admin Authentication:** Secure login for admin users.
+- **User Management:** View and manage registered clients.
+- **Service Management:** Add, update, or remove available services.
+- **Order Management:** Track all client orders in real-time.
+- **Delivery Management:** Assign and monitor delivery partners.
+- **Responsive Design:** Works on Android and iOS devices.
 
-A few resources to get you started if this is your first Flutter project:
+## Technologies Used
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter** – Cross-platform mobile development
+- **Firebase** – Authentication, Firestore, and Real-Time Database
+- **Http** – API requests
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Installation
+
+### Clone the repository
+```bash
+git clone https://github.com/AbhishekValiyapurakkal/silkspaceadminApp.git
